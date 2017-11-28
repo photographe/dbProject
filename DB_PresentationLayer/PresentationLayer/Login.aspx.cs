@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using DB_PresentationLayer.EntityClass;
 using DB_PresentationLayer.BusinessLayer;
 
 namespace DB_PresentationLayer.PresentationLayer
@@ -25,6 +26,7 @@ namespace DB_PresentationLayer.PresentationLayer
             if (IsValid)
             {
                 cmdLogin.Text = "Success!";
+                Server.Transfer("Profile.aspx");
             }
         }
     }
