@@ -97,6 +97,7 @@
     <Compile Include="BusinessLayer\LoginHandler.cs" />
     <Compile Include="DataAccessLayer\DBConnection.cs" />
     <Compile Include="DataAccessLayer\DALLoginHandler.cs" />
+    <Compile Include="EntityClass\EntityDefinition.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
