@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using System.Data;
-//using DB_PresentationLayer.DataAccessLayer.DBConnection;
 
 namespace DB_PresentationLayer.DataAccessLayer
 {
