@@ -94,7 +94,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLayer\BookingHandler.cs" />
     <Compile Include="BusinessLayer\LoginHandler.cs" />
+    <Compile Include="BusinessLayer\ProfileHandler.cs" />
+    <Compile Include="DataAccessLayer\DALProfileHandler.cs" />
+    <Compile Include="DataAccessLayer\DALBookingHandler.cs" />
     <Compile Include="DataAccessLayer\DBConnection.cs" />
     <Compile Include="DataAccessLayer\DALLoginHandler.cs" />
     <Compile Include="EntityClass\EntityDefinition.cs" />
@@ -159,7 +163,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56766</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
