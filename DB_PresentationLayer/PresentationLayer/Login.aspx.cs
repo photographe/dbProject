@@ -11,6 +11,7 @@ namespace DB_PresentationLayer.PresentationLayer
 {
     public partial class Login : System.Web.UI.Page
     {
+        private string UserName;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -25,8 +26,11 @@ namespace DB_PresentationLayer.PresentationLayer
             bool IsValid = loginHandlerObjectInstance.IsLoginValid(userName, password);
             if (IsValid)
             {
+                UserName = userName;
                 cmdLogin.Text = "Success!";
-                Server.Transfer("Profile.aspx");
+                string callPage = string.Concat("Profile.aspx?userID=", UserName);
+                Response.Redirect(callPage);
+                // Server.Transfer("Profile.aspx");
             }
         }
     }

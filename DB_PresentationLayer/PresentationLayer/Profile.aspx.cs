@@ -12,9 +12,10 @@ namespace DB_PresentationLayer.PresentationLayer
 {
     public partial class Profile : System.Web.UI.Page
     {
+        public string USERNAME;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            USERNAME = (Request.QueryString["userID"] != null) ? Request.QueryString["userID"] : "hello";
         }
 
         protected void cmdSave_Click(object sender, EventArgs e)
@@ -88,9 +89,26 @@ namespace DB_PresentationLayer.PresentationLayer
 
             if (IsValid)
             {
+                #region Populate Profile Entity Object
+
+                ProfileObject.Name = name;
+                ProfileObject.Password = password;
+                ProfileObject.Address = address;
+                ProfileObject.AddReview = review;
+                ProfileObject.Contribute = contribute;
+                ProfileObject.Email = email;
+                ProfileObject.Phone = phone;
+                ProfileObject.UserName = USERNAME;
+
+                txtAddress.Text = USERNAME;
+
                 MsgBox("Success!", this.Page, this);
+                #endregion Populate Entity Object
             }
-            // ProfileObject.Name = txtName.Text;
+            else
+            {
+                MsgBox("There is something wrong with your input!", this.Page, this);
+            }
         }
 
         public void MsgBox(String ex, Page pg, Object obj)

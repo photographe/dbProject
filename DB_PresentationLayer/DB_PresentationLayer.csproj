@@ -80,6 +80,8 @@
     <Content Include="Images\photos-wallpaper.jpg" />
     <Content Include="Images\taxi.jpg" />
     <Content Include="Images\thumb-1920-82252.jpg" />
+    <Content Include="Images\Untitled-1.jpg" />
+    <Content Include="Images\untitled.png" />
     <Content Include="PresentationLayer\bookingpage.aspx" />
     <Content Include="PresentationLayer\Login.aspx" />
     <Content Include="PresentationLayer\Profile.aspx" />
