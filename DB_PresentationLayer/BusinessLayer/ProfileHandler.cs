@@ -3,18 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using DB_PresentationLayer.EntityClass;
+using DB_PresentationLayer.Models;
+using DB_PresentationLayer.DataAccessLayer;
 
 namespace DB_PresentationLayer.BusinessLayer
 {
     public class ProfileHandler
     {
-        public bool UpdateProfile(Profile obj, String Username)
+        public bool UpdateProfile(Profile obj, String username)
         {
-            return true;
+            DALProfileHandler dalObjectInstance = new DALProfileHandler();
+            return dalObjectInstance.UpdateProfile(obj, username).isRequestSuccess;
+
         }
-        public bool NewProfile(Profile obj, String usename)
+        public bool NewProfile(Profile obj, String username)
         {
-            return true;
+            DALProfileHandler dalObjectInstance = new DALProfileHandler();
+            return dalObjectInstance.NewProfile(obj, username).isRequestSuccess;
         }
     }
 }

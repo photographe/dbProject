@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using System.Data;
+using DB_PresentationLayer.Models;
 
 namespace DB_PresentationLayer.DataAccessLayer
 {
@@ -11,17 +12,19 @@ namespace DB_PresentationLayer.DataAccessLayer
     {
         //SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Anusha\Documents\Projects\DB_PresentationLayer\App_Data\Database1.mdf;Integrated Security=True");
 
-        public bool IsLoginValid(string userName, string password)
+        public DataObject IsLoginValid(string userName, string password)
         {
             SqlConnection con = DBConnection.Instance.GetDBConnection();
             SqlDataAdapter sda = new SqlDataAdapter("Select count(*) from Users where UserName='"+userName +"' and Password='"+password+"'",con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
-            if(dt.Rows[0][0].ToString() == "1")
+            DataObject d = new DataObject();
+            d.isRequestSuccess = false;
+            if (dt.Rows[0][0].ToString() == "1")
             {
-                return true;
+                d.isRequestSuccess = true;
             }
-            return false;
+            return d;
         }
     }
 }
