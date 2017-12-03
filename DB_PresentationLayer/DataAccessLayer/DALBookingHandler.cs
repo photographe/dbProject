@@ -5,57 +5,23 @@ using System.Web;
 using DB_PresentationLayer.EntityClass;
 using System.Data.SqlClient;
 using System.Data;
-<<<<<<< HEAD
-=======
 using DB_PresentationLayer.Models;
->>>>>>> 21032bfb1440ddb4ecfe232d1a0e4cec5e3311de
 
 namespace DB_PresentationLayer.DataAccessLayer
 {
     public class DALBookingHandler
     {
-<<<<<<< HEAD
-        public Booking FindRoute(Booking obj, string username="")
-=======
         public DataObjectList FindRouteDetails(Booking obj, string username="")
->>>>>>> 21032bfb1440ddb4ecfe232d1a0e4cec5e3311de
         {
             SqlConnection con = DBConnection.Instance.GetDBConnection();
             SqlDataAdapter sda1 = new SqlDataAdapter("Select * from Location where LocationName='" + obj.Source + "'", con);
             DataTable dt1 = new DataTable();
             sda1.Fill(dt1);
-<<<<<<< HEAD
-            int pickupId = (int) dt1.Rows[0][0];
-=======
             int pickupLocationId = (int) dt1.Rows[0][0];
->>>>>>> 21032bfb1440ddb4ecfe232d1a0e4cec5e3311de
 
             SqlDataAdapter sda2 = new SqlDataAdapter("Select * from Location where LocationName='" + obj.Destination + "'", con);
             DataTable dt2 = new DataTable();
             sda1.Fill(dt2);
-<<<<<<< HEAD
-            int dropId = (int)dt2.Rows[0][0];
-
-            SqlDataAdapter sda3 = new SqlDataAdapter("Select * from TripTable where PickUpId='" + pickupId + "' and DropId='" +dropId+ "'", con);
-            DataTable dt3 = new DataTable();
-            sda3.Fill(dt3);
-            foreach(DataRow row in dt3.Rows)
-            {
-                int vid = (int)row["VendorId"];
-                switch (vid)
-                {
-                    case 1:
-
-                        break;
-                    case 2:
-
-                        break;
-                    default:
-                        break;
-                }
-            }
-            return obj;
-=======
             int dropLocationId = (int)dt2.Rows[0][0];
 
             SqlDataAdapter sda3 = new SqlDataAdapter("Select * from TripTable where PickUpLocationId='" + pickupLocationId + "' and DropLocationId='" +dropLocationId+ "'", con);
@@ -106,7 +72,6 @@ namespace DB_PresentationLayer.DataAccessLayer
             DataObject d = new DataObject();
             d.isRequestSuccess = true;
             return d;
->>>>>>> 21032bfb1440ddb4ecfe232d1a0e4cec5e3311de
         }
     }
 }

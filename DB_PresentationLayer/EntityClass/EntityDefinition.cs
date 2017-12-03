@@ -34,7 +34,6 @@ namespace DB_PresentationLayer.EntityClass
         public string LyftPrice;
         public string YellowTime;
         public string YellowPrice;
-        public string optionChosen;
     }
 
     public class Registration
@@ -58,14 +57,5 @@ namespace DB_PresentationLayer.EntityClass
         public DateTime startTime;
         public DateTime endTime;
         public DateTime TimeTaken;
-    }
-
-    public class Cart
-    {
-        public string Source;
-        public string Destination;
-        public string optionChosen;
-        public DateTime startTime;
-        public float Price;
     }
 }

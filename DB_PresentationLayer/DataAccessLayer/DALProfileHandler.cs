@@ -5,24 +5,12 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data;
 using DB_PresentationLayer.EntityClass;
-<<<<<<< HEAD
-=======
 using DB_PresentationLayer.Models;
->>>>>>> 21032bfb1440ddb4ecfe232d1a0e4cec5e3311de
 
 namespace DB_PresentationLayer.DataAccessLayer
 {
     public class DALProfileHandler
     {
-<<<<<<< HEAD
-        public bool UpdateProfile(Profile obj, String Username)
-        {
-            return true;
-        }
-        public bool NewProfile(Profile obj, String usename)
-        {
-            return true;
-=======
         SqlConnection con = DBConnection.Instance.GetDBConnection();
 
         public DataObject UpdateProfile(Profile obj, String Username)
@@ -69,7 +57,6 @@ namespace DB_PresentationLayer.DataAccessLayer
                 d.isRequestSuccess = false;
             }
             return d;
->>>>>>> 21032bfb1440ddb4ecfe232d1a0e4cec5e3311de
         }
     }
 }
