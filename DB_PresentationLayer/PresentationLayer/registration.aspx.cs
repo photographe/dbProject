@@ -96,7 +96,7 @@ namespace DB_PresentationLayer.PresentationLayer
             if (IsValid)
             {
                 EntityClass.Profile ProfileObject = GetProfileObjectFromPage();
-                if (profileHandlerObjectInstance.NewProfile(ProfileObject, USERNAME))
+                if (profileHandlerObjectInstance.NewProfile(ProfileObject, ProfileObject.Name))
                 {
                     MsgBox("Success!", this.Page, this);
                 }
@@ -135,7 +135,7 @@ namespace DB_PresentationLayer.PresentationLayer
 
         public static bool IsPhoneNumber(string number)
         {
-            return Regex.Match(number, @"^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$").Success;
+            return Regex.Match(number, @"^\d{10}$").Success;
         }
 
         #endregion Helper functions

@@ -18,6 +18,7 @@ namespace DB_PresentationLayer.DataAccessLayer
             DataObject d = new DataObject();
             try
             {
+                con.Open();
                 SqlDataAdapter adapter = new SqlDataAdapter();
 
                 // Create the SelectCommand.
@@ -25,11 +26,12 @@ namespace DB_PresentationLayer.DataAccessLayer
             "UPDATE Users SET Name = @name, Phone = @phone, Address = @address WHERE UserName = @username", con);
 
                 // Add the parameters for the UpdateCommand.
-                command.Parameters.Add("@name", SqlDbType.NVarChar, 25, obj.Name);
-                command.Parameters.Add("@phone", SqlDbType.NVarChar, 25, obj.Phone);
-                command.Parameters.Add("@address", SqlDbType.NVarChar, 25, obj.Address);
-                command.Parameters.Add("@username", SqlDbType.NVarChar, 25, obj.UserName);
+                command.Parameters.AddWithValue("@name", obj.Name);
+                command.Parameters.AddWithValue("@phone", obj.Phone);
+                command.Parameters.AddWithValue("@address", obj.Address);
+                command.Parameters.AddWithValue("@username", obj.UserName);
                 adapter.UpdateCommand = command;
+                adapter.UpdateCommand.ExecuteNonQuery();
                 d.isRequestSuccess = true;
             }catch(Exception e)
             {
@@ -43,14 +45,17 @@ namespace DB_PresentationLayer.DataAccessLayer
             try
             {
                 SqlDataAdapter sda = new SqlDataAdapter();
-                SqlCommand command = new SqlCommand("INSERT INTO Users (UserName, Password, Email, Name, Phone, Address, IsStudent) VALUES (@username, @password, @email, @name, @phone, @address, @isstudent)", con);
-                sda.InsertCommand.Parameters.Add("@username", SqlDbType.NVarChar, 25, obj.UserName);
-                sda.InsertCommand.Parameters.Add("@password", SqlDbType.NVarChar, 25, obj.Password);
-                sda.InsertCommand.Parameters.Add("@email", SqlDbType.NVarChar, 25, obj.Email);
-                sda.InsertCommand.Parameters.Add("@name", SqlDbType.NVarChar, 25, obj.Name);
-                sda.InsertCommand.Parameters.Add("@phone", SqlDbType.NVarChar, 25, obj.Phone);
-                sda.InsertCommand.Parameters.Add("@address", SqlDbType.NVarChar, 50, obj.Address);
-                sda.InsertCommand = command;
+                string sql = "INSERT INTO Users (UserName, Password, Email, Name, Phone, Address) VALUES (@username, @password, @email, @name, @phone, @address)";
+                //SqlCommand command = new SqlCommand("INSERT INTO Users (UserName, Password, Email, Name, Phone, Address, IsStudent) VALUES (@username, @password, @email, @name, @phone, @address, @isstudent)", con);
+                con.Open();
+                sda.InsertCommand = new SqlCommand(sql, con);
+                sda.InsertCommand.Parameters.AddWithValue("@username", obj.Name);
+                sda.InsertCommand.Parameters.AddWithValue("@password", obj.Password);
+                sda.InsertCommand.Parameters.AddWithValue("@email", obj.Email);
+                sda.InsertCommand.Parameters.AddWithValue("@name", obj.Name);
+                sda.InsertCommand.Parameters.AddWithValue("@phone", obj.Phone);
+                sda.InsertCommand.Parameters.AddWithValue("@address", obj.Address);
+                sda.InsertCommand.ExecuteNonQuery();
                 d.isRequestSuccess = true;
             }catch(Exception e)
             {
