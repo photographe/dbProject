@@ -132,7 +132,7 @@ namespace DB_PresentationLayer.PresentationLayer
 
         public static bool IsPhoneNumber(string number)
         {
-            return Regex.Match(number, @"^(\+[0-9]{9})$").Success;
+            return Regex.Match(number, @"^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$").Success;
         }
 
         #endregion Helper functions
