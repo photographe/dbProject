@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Thankyou.aspx.cs" Inherits="DB_PresentationLayer.PresentationLayer.Thankyou" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="DB_PresentationLayer.PresentationLayer.Contact" %>
 
 <!DOCTYPE html>
 
@@ -6,6 +6,7 @@
 <head runat="server">
     <title></title>
 </head>
+<body>
 <body>
     <form id="form1" runat="server">
         <div style="height: 625px; font-size: x-large; background-image: url('../Images/Untitled-1.jpg'); width: 1304px; margin-left: 2px; background-attachment: scroll; background: url('../Images/Untitled-1.jpg') center; margin-top: 0px">
@@ -17,20 +18,21 @@
                     <asp:MenuItem Text="TAXI" Value="TAXI COMPARISON"></asp:MenuItem>
                     <asp:MenuItem NavigateUrl="Login.aspx" Text="Login" Value="Login"></asp:MenuItem>
                     <asp:MenuItem NavigateUrl="registration.aspx" Text="Register Profile" Value="Login"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="Contact.aspx" Text="Contact" Value="Logoff"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="Contact.aspx" Text="Contact" Value="Contact"></asp:MenuItem>
                 </Items>
             </asp:Menu>
             <br />
-            <br />
-            <br />
-            <br />
-            <br />
             </strong>
-        <div>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong class="auto-style2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Thank You For Visiting Us!!</strong></div>
+        <div style="height: 57px; font-size: x-large; background-attachment: inherit; background: center; width: 672px; margin-left: 427px;">
+            <span class="auto-style1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong class="auto-style2">&nbsp;Maryam,&nbsp;Anusha,&nbsp;Rose,&nbsp;Agniva.</strong></span>
+        </div>
+        <div style="height: 132px; font-size: x-large; background-attachment: inherit; background: center; width: 672px; margin-left: 427px;">
+            <span class="auto-style1">&nbsp;{emary1,&nbsp;adudi1,&nbsp;rosek2,&nbsp;agniv1}@umbc.edu</span>
+        </div>
         </div>
     <p>
         &nbsp;</p>
     </form>
+</body>
 </body>
 </html>

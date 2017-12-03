@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Web.UI;
 using System.Net.Mail;
 using DB_PresentationLayer.EntityClass;
+using DB_PresentationLayer.BusinessLayer;
 using System.Web.UI.WebControls;
 
 namespace DB_PresentationLayer.PresentationLayer
@@ -18,9 +19,11 @@ namespace DB_PresentationLayer.PresentationLayer
             USERNAME = (Request.QueryString["userID"] != null) ? Request.QueryString["userID"] : "hello";
         }
 
+        #region Update Profile
+
         protected void cmdSave_Click(object sender, EventArgs e)
         {
-            EntityClass.Profile ProfileObject = new EntityClass.Profile();
+            ProfileHandler profileHandlerObjectInstance = new ProfileHandler();
             string name = string.Empty, email = string.Empty, password = string.Empty, phone = string.Empty, address = string.Empty, review = string.Empty, contribute = string.Empty;
             bool IsValid = true;
 
@@ -89,26 +92,34 @@ namespace DB_PresentationLayer.PresentationLayer
 
             if (IsValid)
             {
-                #region Populate Profile Entity Object
-
-                ProfileObject.Name = name;
-                ProfileObject.Password = password;
-                ProfileObject.Address = address;
-                ProfileObject.AddReview = review;
-                ProfileObject.Contribute = contribute;
-                ProfileObject.Email = email;
-                ProfileObject.Phone = phone;
-                ProfileObject.UserName = USERNAME;
-
-                txtAddress.Text = USERNAME;
-
+                EntityClass.Profile ProfileObject = GetProfileObjectFromPage();
+                profileHandlerObjectInstance.UpdateProfile(ProfileObject, USERNAME);
                 MsgBox("Success!", this.Page, this);
-                #endregion Populate Entity Object
             }
             else
             {
                 MsgBox("There is something wrong with your input!", this.Page, this);
             }
+        }
+
+        #endregion Update Profile
+
+        #region Helper functions
+
+        protected EntityClass.Profile GetProfileObjectFromPage()
+        {
+            EntityClass.Profile profileObjectInstance = new EntityClass.Profile();
+
+            profileObjectInstance.Name = txtName.Text;
+            profileObjectInstance.Password = txtPassword.Text;
+            profileObjectInstance.Address = txtAddress.Text;
+            profileObjectInstance.AddReview = txtReview.Text;
+            profileObjectInstance.Contribute = txtContribute.Text;
+            profileObjectInstance.Email = txtEmail.Text;
+            profileObjectInstance.Phone = txtPhone.Text;
+            profileObjectInstance.UserName = USERNAME;
+
+            return profileObjectInstance;
         }
 
         public void MsgBox(String ex, Page pg, Object obj)
@@ -124,5 +135,6 @@ namespace DB_PresentationLayer.PresentationLayer
             return Regex.Match(number, @"^(\+[0-9]{9})$").Success;
         }
 
+        #endregion Helper functions
     }
 }

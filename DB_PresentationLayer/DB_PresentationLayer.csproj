@@ -75,6 +75,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Database1.mdf" />
+    <Content Include="App_Data\Database1_log.ldf">
+      <DependentUpon>Database1.mdf</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Images\nyc-taxi-yellow-cab-facts-new-york-city-yellow-cabs-taxicabs-nyc-facts-1.jpg" />
     <Content Include="Images\photos-wallpaper.jpg" />
@@ -83,16 +87,21 @@
     <Content Include="Images\Untitled-1.jpg" />
     <Content Include="Images\untitled.png" />
     <Content Include="PresentationLayer\bookingpage.aspx" />
+    <Content Include="PresentationLayer\Contact.aspx" />
     <Content Include="PresentationLayer\Login.aspx" />
     <Content Include="PresentationLayer\Profile.aspx" />
     <Content Include="PresentationLayer\registration.aspx" />
     <Content Include="PresentationLayer\Thankyou.aspx" />
-    <Content Include="PresentationLayer\WebForm1.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLayer\BookingHandler.cs" />
     <Compile Include="BusinessLayer\LoginHandler.cs" />
+    <Compile Include="BusinessLayer\ProfileHandler.cs" />
+    <Compile Include="DataAccessLayer\DALBookingHandler.cs" />
     <Compile Include="DataAccessLayer\DALLoginHandler.cs" />
+    <Compile Include="DataAccessLayer\DALProfileHandler.cs" />
+    <Compile Include="DataAccessLayer\DBConnection.cs" />
     <Compile Include="EntityClass\EntityDefinition.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -103,6 +112,13 @@
     </Compile>
     <Compile Include="PresentationLayer\bookingpage.aspx.designer.cs">
       <DependentUpon>bookingpage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationLayer\Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="PresentationLayer\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -132,17 +148,9 @@
     <Compile Include="PresentationLayer\Thankyou.aspx.designer.cs">
       <DependentUpon>Thankyou.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PresentationLayer\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PresentationLayer\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

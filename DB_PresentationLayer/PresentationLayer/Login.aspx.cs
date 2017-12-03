@@ -27,11 +27,23 @@ namespace DB_PresentationLayer.PresentationLayer
             if (IsValid)
             {
                 UserName = userName;
-                cmdLogin.Text = "Success!";
+                MsgBox("Success!", this.Page, this);
                 string callPage = string.Concat("Profile.aspx?userID=", UserName);
                 Response.Redirect(callPage);
                 // Server.Transfer("Profile.aspx");
             }
+            else
+            {
+                MsgBox("Invalid username/password..please try again!", this.Page, this);
+            }
+        }
+
+        public void MsgBox(String ex, Page pg, Object obj)
+        {
+            string s = "<SCRIPT language='javascript'>alert('" + ex.Replace("\r\n", "\\n").Replace("'", "") + "'); </SCRIPT>";
+            Type cstype = obj.GetType();
+            ClientScriptManager cs = pg.ClientScript;
+            cs.RegisterClientScriptBlock(cstype, s, s.ToString());
         }
     }
 }
