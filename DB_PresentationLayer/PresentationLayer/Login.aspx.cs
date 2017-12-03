@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Diagnostics;
 using System.Web.UI.WebControls;
 using DB_PresentationLayer.EntityClass;
 using DB_PresentationLayer.BusinessLayer;
@@ -22,8 +23,12 @@ namespace DB_PresentationLayer.PresentationLayer
             BusinessLayer.LoginHandler loginHandlerObjectInstance = new LoginHandler();
             string userName = txtUserName.Text;
             string password = txtPassword.Text;
-
+            var watch = Stopwatch.StartNew();
             bool IsValid = loginHandlerObjectInstance.IsLoginValid(userName, password);
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            string time = string.Concat("Query Run Time:", elapsedMs.ToString(), " milliseconds");
+            MsgBox(time, this.Page, this);
             if (IsValid)
             {
                 UserName = userName;

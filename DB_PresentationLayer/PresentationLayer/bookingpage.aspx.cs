@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Diagnostics;
 using DB_PresentationLayer.EntityClass;
 using DB_PresentationLayer.BusinessLayer;
 
@@ -24,8 +25,13 @@ namespace DB_PresentationLayer.PresentationLayer
             Booking bookingObjectInstance = GetBookingObjectFromPage();
             BookingHandler bookingHandlerObjectInstance = new BookingHandler();
 
+            var watch = Stopwatch.StartNew();
             if (bookingHandlerObjectInstance.Book(bookingObjectInstance, USERNAME))
             {
+                watch.Stop();
+                var elapsedMs = (watch.ElapsedMilliseconds);
+                string time = string.Concat("Query Run Time:", elapsedMs.ToString(), " milliseconds");
+                MsgBox(time, this.Page, this);
                 MsgBox("Your booking has been made! Bon Voyage!", this.Page, this);
                 string callPage = string.Concat("Profile.aspx?userID=", USERNAME);
                 Response.Redirect(callPage);
@@ -34,7 +40,6 @@ namespace DB_PresentationLayer.PresentationLayer
             {
                 MsgBox("Oops!", this.Page, this);
             }
-
         }
 
         protected void cmdLyftBook_Click(object sender, EventArgs e)
@@ -42,8 +47,13 @@ namespace DB_PresentationLayer.PresentationLayer
             Booking bookingObjectInstance = GetBookingObjectFromPage();
             BookingHandler bookingHandlerObjectInstance = new BookingHandler();
 
+            var watch = Stopwatch.StartNew();
             if (bookingHandlerObjectInstance.Book(bookingObjectInstance, USERNAME))
             {
+                watch.Stop();
+                var elapsedMs = (watch.ElapsedMilliseconds);
+                string time = string.Concat("Query Run Time:", elapsedMs.ToString(), " milliseconds");
+                MsgBox(time, this.Page, this);
                 MsgBox("Your booking has been made! Bon Voyage!", this.Page, this);
                 string callPage = string.Concat("Profile.aspx?userID=", USERNAME);
                 Response.Redirect(callPage);
@@ -59,8 +69,13 @@ namespace DB_PresentationLayer.PresentationLayer
             Booking bookingObjectInstance = GetBookingObjectFromPage();
             BookingHandler bookingHandlerObjectInstance = new BookingHandler();
 
+            var watch = Stopwatch.StartNew();
             if (bookingHandlerObjectInstance.Book(bookingObjectInstance, USERNAME))
             {
+                watch.Stop();
+                var elapsedMs = (watch.ElapsedMilliseconds);
+                string time = string.Concat("Query Run Time:", elapsedMs.ToString(), " milliseconds");
+                MsgBox(time, this.Page, this);
                 MsgBox("Your booking has been made! Bon Voyage!", this.Page, this);
                 string callPage = string.Concat("Profile.aspx?userID=", USERNAME);
                 Response.Redirect(callPage);
@@ -79,8 +94,12 @@ namespace DB_PresentationLayer.PresentationLayer
         {
             Booking bookingObjectInstance = GetBookingObjectFromPage();
             BookingHandler bookingHandlerObjectInstance = new BookingHandler();
-
+            var watch = Stopwatch.StartNew();
             bookingObjectInstance = bookingHandlerObjectInstance.FindRoute(bookingObjectInstance, USERNAME);
+            watch.Stop();
+            var elapsedMs = (watch.ElapsedMilliseconds);
+            string time = string.Concat("Query Run Time:", elapsedMs.ToString(), " milliseconds");
+            MsgBox(time, this.Page, this);
             SetBookingObjectToPage(bookingObjectInstance);
         }
 

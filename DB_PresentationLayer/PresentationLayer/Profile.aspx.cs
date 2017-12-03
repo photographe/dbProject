@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Web.UI;
 using System.Net.Mail;
 using DB_PresentationLayer.EntityClass;
+using System.Diagnostics;
 using DB_PresentationLayer.BusinessLayer;
 using System.Web.UI.WebControls;
 
@@ -93,8 +94,13 @@ namespace DB_PresentationLayer.PresentationLayer
             if (IsValid)
             {
                 EntityClass.Profile ProfileObject = GetProfileObjectFromPage();
+                var watch = Stopwatch.StartNew();
                 if (profileHandlerObjectInstance.UpdateProfile(ProfileObject, USERNAME))
                 {
+                    watch.Stop();
+                    var elapsedMs = (watch.ElapsedMilliseconds);
+                    string time = string.Concat("Query Run Time:", elapsedMs.ToString(), " milliseconds");
+                    MsgBox(time, this.Page, this);
                     MsgBox("Success!", this.Page, this);
                 }
                 else

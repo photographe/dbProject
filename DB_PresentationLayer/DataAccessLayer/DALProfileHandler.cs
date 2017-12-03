@@ -30,10 +30,12 @@ namespace DB_PresentationLayer.DataAccessLayer
                 command.Parameters.AddWithValue("@username", obj.UserName);
                 adapter.UpdateCommand = command;
                 adapter.UpdateCommand.ExecuteNonQuery();
+                con.Close();
                 d.isRequestSuccess = true;
             }catch(Exception e)
             {
                 d.isRequestSuccess = false;
+                con.Close();
             }
             return d;
         }
@@ -54,10 +56,12 @@ namespace DB_PresentationLayer.DataAccessLayer
                 sda.InsertCommand.Parameters.AddWithValue("@phone", obj.Phone);
                 sda.InsertCommand.Parameters.AddWithValue("@address", obj.Address);
                 sda.InsertCommand.ExecuteNonQuery();
+                con.Close();
                 d.isRequestSuccess = true;
             }catch(Exception e)
             {
                 d.isRequestSuccess = false;
+                con.Close();
             }
             return d;
         }
