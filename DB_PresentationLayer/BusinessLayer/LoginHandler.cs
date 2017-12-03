@@ -10,8 +10,8 @@ namespace DB_PresentationLayer.BusinessLayer
     {
         public bool IsLoginValid(string userName, string password)
         {
-            DataAccessLayer.DALLoginHandler dalObjectInstance = new DALLoginHandler();
-            return dalObjectInstance.IsLoginValid(userName, password);
+            DALLoginHandler dalObjectInstance = new DALLoginHandler();
+            return dalObjectInstance.IsLoginValid(userName, password).isRequestSuccess;
         }
     }
 }
