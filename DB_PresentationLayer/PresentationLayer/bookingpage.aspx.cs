@@ -22,7 +22,8 @@ namespace DB_PresentationLayer.PresentationLayer
 
         protected void cmdUberBook_Click(object sender, EventArgs e)
         {
-            Booking bookingObjectInstance = GetBookingObjectFromPage();
+            string vendor = "uber";
+            Booking bookingObjectInstance = GetBookingObjectFromPage(vendor);
             BookingHandler bookingHandlerObjectInstance = new BookingHandler();
 
             var watch = Stopwatch.StartNew();
@@ -44,7 +45,8 @@ namespace DB_PresentationLayer.PresentationLayer
 
         protected void cmdLyftBook_Click(object sender, EventArgs e)
         {
-            Booking bookingObjectInstance = GetBookingObjectFromPage();
+            string vendor = "lyft";
+            Booking bookingObjectInstance = GetBookingObjectFromPage(vendor);
             BookingHandler bookingHandlerObjectInstance = new BookingHandler();
 
             var watch = Stopwatch.StartNew();
@@ -66,7 +68,8 @@ namespace DB_PresentationLayer.PresentationLayer
 
         protected void cmdYellowBook_Click(object sender, EventArgs e)
         {
-            Booking bookingObjectInstance = GetBookingObjectFromPage();
+            string vendor = "yellow";
+            Booking bookingObjectInstance = GetBookingObjectFromPage(vendor);
             BookingHandler bookingHandlerObjectInstance = new BookingHandler();
 
             var watch = Stopwatch.StartNew();
@@ -92,7 +95,7 @@ namespace DB_PresentationLayer.PresentationLayer
 
         protected void cmdFindRoute_Click(object sender, EventArgs e)
         {
-            Booking bookingObjectInstance = GetBookingObjectFromPage();
+            Booking bookingObjectInstance = GetBookingObjectFromPage("uber");
             BookingHandler bookingHandlerObjectInstance = new BookingHandler();
             var watch = Stopwatch.StartNew();
             bookingObjectInstance = bookingHandlerObjectInstance.FindRoute(bookingObjectInstance, USERNAME);
@@ -115,19 +118,44 @@ namespace DB_PresentationLayer.PresentationLayer
 
         #region Helper functions
 
-        protected Booking GetBookingObjectFromPage()
+        protected Booking GetBookingObjectFromPage(string vendor)
         {
             Booking bookingObjetctInstance = new Booking();
 
             bookingObjetctInstance.Source = txtSource.Text;
             bookingObjetctInstance.Destination = txtDestination.Text;
-            bookingObjetctInstance.UberTime = txtUberTime.Text;
-            bookingObjetctInstance.LyftTime = txtLyftTime.Text;
-            bookingObjetctInstance.YellowTime = txtYellowTime.Text;
-            bookingObjetctInstance.UberPrice = txtUberPrice.Text;
-            bookingObjetctInstance.LyftPrice = txtLyftPrice.Text;
-            bookingObjetctInstance.YellowPrice = txtYellowPrice.Text;
+            if (vendor == "uber")
+            {
+                bookingObjetctInstance.UberTime = txtUberTime.Text;
+                bookingObjetctInstance.UberPrice = txtUberPrice.Text;
+            }
+            else
+            {
+                bookingObjetctInstance.UberTime = string.Empty;
+                bookingObjetctInstance.UberPrice = string.Empty;
+            }
 
+            if (vendor == "lyft")
+            {
+                bookingObjetctInstance.LyftTime = txtLyftTime.Text;
+                bookingObjetctInstance.LyftPrice = txtLyftPrice.Text;
+            }
+            else
+            {
+                bookingObjetctInstance.LyftTime = string.Empty;
+                bookingObjetctInstance.LyftPrice = string.Empty;
+            }
+            
+            if(vendor == "yellow")
+            {
+                bookingObjetctInstance.YellowTime = txtYellowTime.Text;
+                bookingObjetctInstance.YellowPrice = txtYellowPrice.Text;
+            }
+            else
+            {
+                bookingObjetctInstance.YellowTime = string.Empty;
+                bookingObjetctInstance.YellowPrice = string.Empty;
+            }
             return bookingObjetctInstance;
         }
 
@@ -155,7 +183,7 @@ namespace DB_PresentationLayer.PresentationLayer
 
         public void MsgBox(String ex, Page pg, Object obj)
         {
-            string s = "<SCRIPT language='javascript'>alert('" + ex.Replace("\r\n", "\\n").Replace("'", "") + "'); </SCRIPT>";
+            string s = "<SCRIPT language='javascript'>confirm('" + ex.Replace("\r\n", "\\n").Replace("'", "") + "'); </SCRIPT>";
             Type cstype = obj.GetType();
             ClientScriptManager cs = pg.ClientScript;
             cs.RegisterClientScriptBlock(cstype, s, s.ToString());

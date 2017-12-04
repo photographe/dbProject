@@ -94,6 +94,7 @@ namespace DB_PresentationLayer.PresentationLayer
             if (IsValid)
             {
                 EntityClass.Profile ProfileObject = GetProfileObjectFromPage();
+                USERNAME = ProfileObject.Name;
                 var watch = Stopwatch.StartNew();
                 if (profileHandlerObjectInstance.UpdateProfile(ProfileObject, USERNAME))
                 {
@@ -102,6 +103,8 @@ namespace DB_PresentationLayer.PresentationLayer
                     string time = string.Concat("Query Run Time:", elapsedMs.ToString(), " milliseconds");
                     MsgBox(time, this.Page, this);
                     MsgBox("Success!", this.Page, this);
+                    string callPage = string.Concat("bookingpage.aspx?userID=", USERNAME);
+                    Response.Redirect(callPage);
                 }
                 else
                 {

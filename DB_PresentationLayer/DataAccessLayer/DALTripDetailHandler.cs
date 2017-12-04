@@ -14,8 +14,9 @@ namespace DB_PresentationLayer.DataAccessLayer
         {
             SqlDataAdapter da = new SqlDataAdapter();
             SqlCommand cmd = con.CreateCommand();
-            string SQL = "SELECT * FROM TripDetail WHERE CustomerId = 1";
+            string SQL = "SELECT * FROM TripTable WHERE TripTable.UserId = (SELECT userid FROM users WHERE name = @userName)";
             cmd.CommandText = SQL;
+            cmd.Parameters.AddWithValue("@userName", username);
             da.SelectCommand = cmd;
             DataSet ds = new DataSet();
 

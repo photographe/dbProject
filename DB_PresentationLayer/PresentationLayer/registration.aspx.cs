@@ -106,6 +106,8 @@ namespace DB_PresentationLayer.PresentationLayer
                     MsgBox(time, this.Page, this);
                     Session["USERNAME"] = ProfileObject.Name;
                     MsgBox("Success!", this.Page, this);
+                    string callPage = string.Concat("Login.aspx?userID=", USERNAME);
+                    Response.Redirect(callPage);
                 }
                 else
                 {
