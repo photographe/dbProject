@@ -17,8 +17,9 @@ namespace DB_PresentationLayer.BusinessLayer
 
             foreach (DataObject d in dol.dataObjList)
             {
-                if(d.isRequestSuccess)
-                switch (d.vendorName)
+                System.Diagnostics.Debug.WriteLine(d.vendorName + " " + d.travelcost + " " + d.travelTime);
+                if (d.isRequestSuccess)
+                switch (d.vendorName.Trim())
                 {
                     case "Uber":
                         obj.UberPrice = d.travelcost;

@@ -17,7 +17,7 @@ namespace DB_PresentationLayer.PresentationLayer
         public string USERNAME;
         protected void Page_Load(object sender, EventArgs e)
         {
-            USERNAME = (Request.QueryString["userID"] != null) ? Request.QueryString["userID"] : "hello";
+            USERNAME = (Request.QueryString["userID"] != null) ? Request.QueryString["userID"] : Session["USERNAME"].ToString();
         }
 
         #region Update Profile
@@ -144,5 +144,10 @@ namespace DB_PresentationLayer.PresentationLayer
         }
 
         #endregion Helper functions
+
+        protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
+        {
+            USERNAME = (Request.QueryString["userID"] != null) ? Request.QueryString["userID"] : Session["USERNAME"].ToString();
+        }
     }
 }

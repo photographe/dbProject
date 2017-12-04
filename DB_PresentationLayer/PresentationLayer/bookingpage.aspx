@@ -14,13 +14,11 @@
             <br />
             <asp:Menu ID="Menu1" runat="server" BackColor="#003300" BorderColor="#333300" BorderWidth="1px" Font-Size="X-Large" ForeColor="White" Orientation="Horizontal" Width="1300px" Font-Names="Calibri">
                 <Items>
-                    <asp:MenuItem Text="TAXI" Value="TAXI COMPARISON"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="Login.aspx" Text="Login" Value="Login"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="Profile.aspx" Text="Update Profile" Value="Login"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="bookingpage.aspx" Text="Book" Value="New Item"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="bookingpage.aspx" Text="Compare" Value="Compare"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="Contact.aspx" Text="Contact" Value="Logoff"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="Thankyou.aspx" Text="Logoff" Value="Logoff"></asp:MenuItem>
+                    <asp:MenuItem Text="Book a Cab" Value="TAXI COMPARISON"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="Profile.aspx" Text="MY PROFILE" Value="Login"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="bookingpage.aspx" Text="COMPARE" Value="Compare"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="Contact.aspx" Text="CONTACT" Value="Logoff"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="Thankyou.aspx" Text="LOG OFF" Value="Logoff"></asp:MenuItem>
                 </Items>
             </asp:Menu>
             </strong>

@@ -12,10 +12,17 @@ namespace DB_PresentationLayer.PresentationLayer
 {
     public partial class Login : System.Web.UI.Page
     {
-        private string UserName;
+        private string USERNAME;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                USERNAME = Session["USERNAME"].ToString();
+            }
+            catch(Exception exceptionInstance)
+            {
+                USERNAME = string.Empty;
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -31,9 +38,10 @@ namespace DB_PresentationLayer.PresentationLayer
             MsgBox(time, this.Page, this);
             if (IsValid)
             {
-                UserName = userName;
+                Session["USERNAME"] = USERNAME;
+                USERNAME = userName;
                 MsgBox("Success!", this.Page, this);
-                string callPage = string.Concat("Profile.aspx?userID=", UserName);
+                string callPage = string.Concat("Profile.aspx?userID=", USERNAME);
                 Response.Redirect(callPage);
                 // Server.Transfer("Profile.aspx");
             }

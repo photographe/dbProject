@@ -77,9 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Database1.mdf" />
-    <Content Include="App_Data\Database1_log.ldf">
-      <DependentUpon>Database1.mdf</DependentUpon>
-    </Content>
+    <Content Include="App_Data\Database1_log.ldf" />
     <Content Include="Global.asax" />
     <Content Include="Images\nyc-taxi-yellow-cab-facts-new-york-city-yellow-cabs-taxicabs-nyc-facts-1.jpg" />
     <Content Include="Images\photos-wallpaper.jpg" />
@@ -93,15 +91,18 @@
     <Content Include="PresentationLayer\Profile.aspx" />
     <Content Include="PresentationLayer\registration.aspx" />
     <Content Include="PresentationLayer\Thankyou.aspx" />
+    <Content Include="PresentationLayer\Trip Detail.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLayer\BookingHandler.cs" />
     <Compile Include="BusinessLayer\LoginHandler.cs" />
     <Compile Include="BusinessLayer\ProfileHandler.cs" />
+    <Compile Include="BusinessLayer\TripDetailHandler.cs" />
     <Compile Include="DataAccessLayer\DALBookingHandler.cs" />
     <Compile Include="DataAccessLayer\DALLoginHandler.cs" />
     <Compile Include="DataAccessLayer\DALProfileHandler.cs" />
+    <Compile Include="DataAccessLayer\DALTripDetailHandler.cs" />
     <Compile Include="DataAccessLayer\DBConnection.cs" />
     <Compile Include="EntityClass\EntityDefinition.cs" />
     <Compile Include="Global.asax.cs">
@@ -149,6 +150,13 @@
     </Compile>
     <Compile Include="PresentationLayer\Thankyou.aspx.designer.cs">
       <DependentUpon>Thankyou.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PresentationLayer\Trip Detail.aspx.cs">
+      <DependentUpon>Trip Detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\Trip Detail.aspx.designer.cs">
+      <DependentUpon>Trip Detail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

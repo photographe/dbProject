@@ -16,7 +16,7 @@ namespace DB_PresentationLayer.PresentationLayer
         public string USERNAME;
         protected void Page_Load(object sender, EventArgs e)
         {
-            USERNAME = (Request.QueryString["userID"] != null) ? Request.QueryString["userID"] : "hello";
+            USERNAME = (Request.QueryString["userID"] != null) ? Request.QueryString["userID"] : "currentUser";
         }
 
         #region New Profile
@@ -104,6 +104,7 @@ namespace DB_PresentationLayer.PresentationLayer
                     var elapsedMs = watch.ElapsedMilliseconds;
                     string time = string.Concat("Query Run Time:", elapsedMs.ToString(), " milliseconds");
                     MsgBox(time, this.Page, this);
+                    Session["USERNAME"] = ProfileObject.Name;
                     MsgBox("Success!", this.Page, this);
                 }
                 else

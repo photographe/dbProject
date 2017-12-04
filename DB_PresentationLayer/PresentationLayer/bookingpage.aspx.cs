@@ -15,7 +15,7 @@ namespace DB_PresentationLayer.PresentationLayer
         public string USERNAME;
         protected void Page_Load(object sender, EventArgs e)
         {
-            USERNAME = (Request.QueryString["userID"] != null) ? Request.QueryString["userID"] : "hello";
+            USERNAME = (Request.QueryString["userID"] != null) ? Request.QueryString["userID"] : Session["USERNAME"].ToString();
         }
 
         #region Book
@@ -100,6 +100,8 @@ namespace DB_PresentationLayer.PresentationLayer
             var elapsedMs = (watch.ElapsedMilliseconds);
             string time = string.Concat("Query Run Time:", elapsedMs.ToString(), " milliseconds");
             MsgBox(time, this.Page, this);
+
+            checkValueReturned(bookingObjectInstance);
             SetBookingObjectToPage(bookingObjectInstance);
         }
 
@@ -139,6 +141,16 @@ namespace DB_PresentationLayer.PresentationLayer
             txtLyftPrice.Text = bookingObjectInstance.LyftPrice;
             txtYellowTime.Text = bookingObjectInstance.YellowTime;
             txtYellowPrice.Text = bookingObjectInstance.YellowPrice;
+        }
+
+        private void checkValueReturned(Booking bookingObjectInstance)
+        {
+            if(string.IsNullOrWhiteSpace(bookingObjectInstance.LyftPrice) && string.IsNullOrWhiteSpace(bookingObjectInstance.LyftTime) 
+                && string.IsNullOrWhiteSpace(bookingObjectInstance.UberPrice) && string.IsNullOrWhiteSpace(bookingObjectInstance.UberTime)
+                && string.IsNullOrWhiteSpace(bookingObjectInstance.YellowPrice) && string.IsNullOrWhiteSpace(bookingObjectInstance.YellowTime))
+            {
+                MsgBox("None of the operators cover that area currently..sorry for the inconvenience" , this.Page, this);
+            }
         }
 
         public void MsgBox(String ex, Page pg, Object obj)
