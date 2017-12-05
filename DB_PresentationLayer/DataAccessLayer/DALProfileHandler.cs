@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Data;
 using DB_PresentationLayer.EntityClass;
 using DB_PresentationLayer.Models;
+using System.Threading;
 
 namespace DB_PresentationLayer.DataAccessLayer
 {
@@ -40,6 +41,8 @@ namespace DB_PresentationLayer.DataAccessLayer
         public DataObject NewProfile(Profile obj, String usename)
         {
             DataObject d = new DataObject();
+            Mutex m = new Mutex();
+            m.WaitOne();
             try
             {
                 SqlDataAdapter sda = new SqlDataAdapter();
@@ -59,6 +62,7 @@ namespace DB_PresentationLayer.DataAccessLayer
             {
                 d.isRequestSuccess = false;
             }
+            m.ReleaseMutex();
             return d;
         }
     }

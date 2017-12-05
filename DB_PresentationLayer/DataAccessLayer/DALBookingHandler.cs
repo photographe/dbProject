@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 using DB_PresentationLayer.Models;
 using System.Globalization;
+using System.Threading;
 
 namespace DB_PresentationLayer.DataAccessLayer
 {
@@ -20,7 +21,7 @@ namespace DB_PresentationLayer.DataAccessLayer
             dol.isRequestSuccess = true;
 
             try
-            {
+            {             
                 SqlDataAdapter sda1 = new SqlDataAdapter("Select * from Location where LocationName LIKE '%" + obj.Source + "%'", con);
                 DataTable dt1 = new DataTable();
                 sda1.Fill(dt1);
@@ -75,7 +76,8 @@ namespace DB_PresentationLayer.DataAccessLayer
             d.isRequestSuccess = true;
 
             SqlConnection con = DBConnection.Instance.GetDBConnection();
-
+            Mutex m = new Mutex();
+            m.WaitOne();
             try
             {
                 SqlDataAdapter sda1 = new SqlDataAdapter("Select * from Location where LocationName LIKE '%" + obj.Source + "%'", con);
@@ -201,6 +203,7 @@ namespace DB_PresentationLayer.DataAccessLayer
                 d.isRequestSuccess = false;
 
             }
+            m.ReleaseMutex();
             return d;
         }
     }
