@@ -39,10 +39,10 @@ namespace DB_PresentationLayer.BusinessLayer
             
             return obj;
         }
-        public bool Book(Booking obj, string username)
+        public string Book(Booking obj, string username)
         {
             DALBookingHandler dalObjectInstance = new DALBookingHandler();
-            return dalObjectInstance.Book(obj, username).isRequestSuccess;
+             return dalObjectInstance.Book(obj, username).cabBooked;
         }
     }
 }

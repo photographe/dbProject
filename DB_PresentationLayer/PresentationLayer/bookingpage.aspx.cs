@@ -24,7 +24,7 @@ namespace DB_PresentationLayer.PresentationLayer
             Booking bookingObjectInstance = GetBookingObjectFromPage();
             BookingHandler bookingHandlerObjectInstance = new BookingHandler();
 
-            if (bookingHandlerObjectInstance.Book(bookingObjectInstance, USERNAME))
+            if (bookingHandlerObjectInstance.Book(bookingObjectInstance, USERNAME) != "")
             {
                 MsgBox("Your booking has been made! Bon Voyage!", this.Page, this);
                 string callPage = string.Concat("Profile.aspx?userID=", USERNAME);
@@ -42,7 +42,7 @@ namespace DB_PresentationLayer.PresentationLayer
             Booking bookingObjectInstance = GetBookingObjectFromPage();
             BookingHandler bookingHandlerObjectInstance = new BookingHandler();
 
-            if (bookingHandlerObjectInstance.Book(bookingObjectInstance, USERNAME))
+            if (bookingHandlerObjectInstance.Book(bookingObjectInstance, USERNAME) != "")
             {
                 MsgBox("Your booking has been made! Bon Voyage!", this.Page, this);
                 string callPage = string.Concat("Profile.aspx?userID=", USERNAME);
@@ -59,7 +59,7 @@ namespace DB_PresentationLayer.PresentationLayer
             Booking bookingObjectInstance = GetBookingObjectFromPage();
             BookingHandler bookingHandlerObjectInstance = new BookingHandler();
 
-            if (bookingHandlerObjectInstance.Book(bookingObjectInstance, USERNAME))
+            if (bookingHandlerObjectInstance.Book(bookingObjectInstance, USERNAME) != "")
             {
                 MsgBox("Your booking has been made! Bon Voyage!", this.Page, this);
                 string callPage = string.Concat("Profile.aspx?userID=", USERNAME);

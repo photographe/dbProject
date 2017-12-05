@@ -13,7 +13,9 @@ namespace DB_PresentationLayer.Models
         public string pickUpLocationName;
         public string dropLocationName;
         public string vendorName;
+        public string cabBooked;
         public bool isRequestSuccess;
+
     }
     public class DataObjectList
     {
